@@ -1,0 +1,44 @@
+<header>
+	<div class="container-fluid" bis_skin_checked="1">
+		<div class="row">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+				<a class="navbar-brand col-10" href="/">Bienvenue Chez Shoes Island !</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarColor02" bis_skin_checked="1">
+					<div>
+						<a href="/panier">panier
+							{% set total = 0 %}
+							{% for item in panier %}
+								{% set total = total + item.quantite %}
+							{% endfor %}
+							{{ total }}</a>
+					</div>
+					<ul class="navbar-nav me-auto">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle a_img_co col-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="img\LogoConnexion-removebg-preview.png" alt="connexion" class="img_connexion"></a>
+							<div class="dropdown-menu" bis_skin_checked="1">
+								<a class="dropdown-item" href="#">Connexion</a>
+								<a class="dropdown-item" href="/user">Inscription</a>
+								<div class="dropdown-divider" bis_skin_checked="1"></div>
+								<a class="dropdown-item" href="#">Nous contactez</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				{% for categorie in categories %}
+					<a href="/categorie/{{categorie.id}}" class="btn_navbar col-3 btn btn-secondary">
+						<button type="button" class="btn btn-secondary">{{categorie.CategorieNom}}</button>
+					</a>
+
+
+				{% endfor %}
+			</div>
+		</div>
+
+
+	</div>
+</nav></header>

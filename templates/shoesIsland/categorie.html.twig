@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12 mb-3"></div>
+			<div class='container-fluid'>
+				<section class="row ">
+					{% for sc in liste %}
+						<div class="card col-6 ml-3 text-white bg-warning" style="">
+							<div class="card-header">{{sc.SousCategorieNom}}</div>
+							<div class="card-body">
+								<a href="/produits/{{ sc.id }}"><img src="" class="img_catHomme"/></a>
+								<p class="card-text">{{sc.SousCategorieType}}</p>
+                                <a href="/produits/{{ sc.id }}" class="btn btn-warning">Voir les articles </a>
+							</div>
+						</div>
+
+					{% endfor %}
+				</section>
+			</div>
+
+		</div>
+	</div>
+</div>{% endblock %}

@@ -1,0 +1,51 @@
+html,body{
+    margin:0;
+    padding:0;
+    height:100%;
+}
+.footer_content{
+    position:fixed;
+   bottom: 0 !important;  /* on le colle en bas */
+   width:100%;
+   height:100px;   /* Hauteur du pied de page */
+   margin: 0;
+}
+#main {
+    min-height:100%;
+    position:absolute;
+    padding-bottom:100px;   /* Hauteur du pied de page */
+    visibility: hidden;
+ }
+
+.navbar-brand , .footer_content{
+    font-family: 'Dancing Script', cursive;
+}
+.img_connexion{
+    width: 150%;
+    padding: auto;
+}
+.btn_navbar{
+    display: inline;
+    
+}
+.txt_cgu{
+   text-align: center;
+}
+
+.card{
+    margin-left: 2%;
+    margin-top: 2%;
+}
+.img_catHomme{
+    width: 80%;
+}
+
+/* CAROUSEL */
+.carousel_rep{
+border: 1px;
+border-color: black;
+}
+.img_carou{
+    margin-left: 41%;
+    margin-top: 5%;
+}
