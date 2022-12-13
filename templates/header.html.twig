@@ -2,7 +2,11 @@
 	<div class="container-fluid" bis_skin_checked="1">
 		<div class="row">
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-				<a class="navbar-brand col-10" href="/">Bienvenue Chez Shoes Island !</a>
+			{% if app.user %}
+				<a class="navbar-brand col-10" href="/">Bienvenue Chez Shoes Island {{ app.user.nom }}  {{ app.user.prenom }} </a>
+			{% else %}
+				<a class="navbar-brand col-10" href="/">Bienvenue Chez Shoes Island ! </a>
+			{% endif %}
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -19,7 +23,12 @@
 					
 					<ul class="navbar-nav me-auto">
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle a_img_co col-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="\img\global\logoProfil" alt="connexion" class="img_connexion"></a>
+							<a class="nav-link dropdown-toggle a_img_co col-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+							{% if app.user %}
+							<img src="{{app.user.image}}" alt="connexion" class="img_connexion"></a>
+							{% else %}
+							<img src="\img\global\logoBaseProfil.png" alt="connexion" class="img_connexion"></a>
+							{% endif %}
 							<div class="dropdown-menu" bis_skin_checked="1">								
 								{% if app.user %}
 									<a class="dropdown-item" href="/profile">Modifiez votre profil</a>

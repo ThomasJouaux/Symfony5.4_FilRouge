@@ -33,6 +33,9 @@ class SousCategorie
     #[ORM\OneToMany(mappedBy: 'SousCategorie', targetEntity: Produit::class)]
     private Collection $produits;
 
+    #[ORM\Column(length: 255)]
+    private ?string $img = null;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
@@ -130,6 +133,18 @@ class SousCategorie
                 $produit->setSousCategorie(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(string $img): self
+    {
+        $this->img = $img;
 
         return $this;
     }

@@ -41,7 +41,8 @@ class CategorieFixtures extends Fixture
                 ->setCodePostal("80000")
                 ->setVille("Amiens")
                 ->setTelephone("06.29.37.72.65")
-                ->setImage("\img\global\logoProfil.jpg");
+                ->setImage("\img\global\logoProfil.jpg")
+                ->setPays("France");
         $manager->persist($user1);
 
         $user2 = new User();
@@ -56,7 +57,8 @@ class CategorieFixtures extends Fixture
                 ->setCodePostal("80000")
                 ->setVille("Amiens")
                 ->setTelephone("06.29.37.72.65")
-                ->setImage("\img\global\logoProfil.jpg");
+                ->setImage("\img\global\logoProfil.jpg")
+                ->setPays("France");
         $manager->persist($user2);
 
         $user3 = new User();
@@ -71,7 +73,8 @@ class CategorieFixtures extends Fixture
                 ->setCodePostal("80000")
                 ->setVille("Amiens")
                 ->setTelephone("06.29.37.72.65")
-                ->setImage("\img\global\logoProfil.jpg");
+                ->setImage("\img\global\logoProfil.jpg")
+                ->setPays("France");
         $manager->persist($user3);
 
         $user4 = new User();
@@ -86,7 +89,8 @@ class CategorieFixtures extends Fixture
                 ->setCodePostal("80000")
                 ->setVille("Amiens")
                 ->setTelephone("06.29.37.72.65")
-                ->setImage("\img\global\logoProfil.jpg");
+                ->setImage("\img\global\logoProfil.jpg")
+                ->setPays("France");
         $manager->persist($user4);
 
         $categorieHomme1 = new Categorie();
@@ -122,7 +126,8 @@ class CategorieFixtures extends Fixture
                 $SousCategorieHomme1 = new SousCategorie();
                 $SousCategorieHomme1->setSousCategorieNom("Sous Categorie homme")
                     ->setSousCategorieSexe("Homme")
-                    ->setSousCategorieType("Sport");
+                    ->setSousCategorieType("Sport")
+                    ->setImg("/img/sousCat/SousCatSport.png");
                 $SousCategorieHomme1->setCategorie($categorieHomme1);
 
                 $manager->persist($SousCategorieHomme1);
@@ -130,7 +135,8 @@ class CategorieFixtures extends Fixture
                 $SousCategorieHomme2 = new SousCategorie();
                 $SousCategorieHomme2->setSousCategorieNom("Sous Categorie homme")
                     ->setSousCategorieSexe("Homme")
-                    ->setSousCategorieType("Ville");
+                    ->setSousCategorieType("Ville")
+                    ->setImg("/img/sousCat/SousCatVille.jpg");
                 $SousCategorieHomme2->setCategorie($categorieHomme1);
 
                 $manager->persist($SousCategorieHomme2);
@@ -138,7 +144,8 @@ class CategorieFixtures extends Fixture
                 $SousCategorieFemme1 = new SousCategorie();
                 $SousCategorieFemme1->setSousCategorieNom("Sous Categorie Femme")
                     ->setSousCategorieSexe("Femme")
-                    ->setSousCategorieType("Sport");
+                    ->setSousCategorieType("Sport")
+                    ->setImg("/img/sousCat/SousCatSport.png");
                 $SousCategorieFemme1->setCategorie($categorieFemme2);
 
                 $manager->persist($SousCategorieFemme1);
@@ -146,7 +153,8 @@ class CategorieFixtures extends Fixture
                 $SousCategorieFemme2 = new SousCategorie();
                 $SousCategorieFemme2->setSousCategorieNom("Sous Categorie Femme")
                     ->setSousCategorieSexe("Femme")
-                    ->setSousCategorieType("Ville");
+                    ->setSousCategorieType("Ville")
+                    ->setImg("/img/sousCat/SousCatVille.jpg");
                 $SousCategorieFemme2->setCategorie($categorieFemme2);
 
                 $manager->persist($SousCategorieFemme2);
@@ -154,7 +162,8 @@ class CategorieFixtures extends Fixture
                 $SousCategorieEnfant2 = new SousCategorie();
                 $SousCategorieEnfant2->setSousCategorieNom("Sous Categorie Enfant")
                     ->setSousCategorieSexe("Enfant")
-                    ->setSousCategorieType("Sport");
+                    ->setSousCategorieType("Sport")
+                    ->setImg("/img/sousCat/SousCatSport.png");
                     $SousCategorieEnfant2->setCategorie($categorieEnfant3);
 
 
@@ -163,7 +172,8 @@ class CategorieFixtures extends Fixture
                 $SousCategorieEnfant3 = new SousCategorie();
                 $SousCategorieEnfant3->setSousCategorieNom("Sous Categorie Enfant")
                     ->setSousCategorieSexe("Enfant")
-                    ->setSousCategorieType("Ville");
+                    ->setSousCategorieType("Ville")
+                    ->setImg("/img/sousCat/SousCatVille.jpg");
                     $SousCategorieEnfant3->setCategorie($categorieEnfant3);
 
 
@@ -172,8 +182,9 @@ class CategorieFixtures extends Fixture
 
                 $SousCategorieAccessoire1 = new SousCategorie();
                 $SousCategorieAccessoire1->setSousCategorieNom("Sous Categorie Accessoire")
-            ->setSousCategorieSexe('Accessoire')
-            ->setSousCategorieType("Lacets");
+                     ->setSousCategorieSexe('Accessoire')
+                    ->setSousCategorieType("Lacets")
+                    ->setImg("/img/sousCat/SousCatVille.jpg");
                     $SousCategorieAccessoire1->setCategorie($categorieAccessoire4);
                     $manager->persist($SousCategorieAccessoire1);
 
@@ -182,7 +193,8 @@ class CategorieFixtures extends Fixture
                 $SousCategorieAccessoire2 = new SousCategorie();
                 $SousCategorieAccessoire2->setSousCategorieNom("Sous Categorie Accessoire")
                     ->setSousCategorieSexe('Accessoire')
-                    ->setSousCategorieType("Cirage");
+                    ->setSousCategorieType("Cirage")
+                    ->setImg("/img/sousCat/SousCatVille.jpg");
                             $SousCategorieAccessoire2->setCategorie($categorieAccessoire4);
 
                     $manager->persist($SousCategorieAccessoire2);
@@ -191,7 +203,8 @@ class CategorieFixtures extends Fixture
                 $SousCategorieAccessoire3 = new SousCategorie();
                 $SousCategorieAccessoire3->setSousCategorieNom("Sous Categorie Accessoire")
                     ->setSousCategorieSexe('Accessoire')
-                    ->setSousCategorieType("Semelles");
+                    ->setSousCategorieType("Semelles")
+                    ->setImg("/img/sousCat/SousCatVille.jpg");
                             $SousCategorieAccessoire3->setCategorie($categorieAccessoire4);
                             $manager->persist($SousCategorieAccessoire3);
 

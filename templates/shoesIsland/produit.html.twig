@@ -2,20 +2,46 @@
 
 
 {% block body %}
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
         <div class="col-12 mb-3">
             
         </div>
                 {% for pro in liste %}
-                    <div class="col-12">
+                    <div class="col-4">
                         <div class="bordure-grise px-3 pt-3 mb-3 shadow">
                             <a href="/categorie/{{ pro.id }}">
-                            <a class="btn" href="#"><img src="{{pro.ImgProduit}}"></a>
+                            <a class="btn" href="#"><img src="{{pro.ImgProduit}}" width="250" height="300" ></a>
                             {# {{dump(pro.ImgProduit)}} #}
                                 <h4 class="text-center">
                                 {{ pro.nomProduit}}
                                 </h4>
+                                <p class="text-center">
+                                {{pro.descriptionProduit}}
+                                </p>
+                                 <p class="text-left">
+                                {{pro.prixProduit}} €
+                                </p>
+                                <label for="taille-chaussure">Taille</label>
+                                <select name="taille" id="taille_select">
+                                         <option value="">--Choisissez une taille--</option>
+                                        <option value="15">15</option>
+                                        <option value="16">16</option>
+                                        <option value="17">17</option>
+                                        <option value="18">18</option>
+                                        <option value="19">19</option>
+                                        <option value="20">20</option>
+
+
+                                         <option value="36">36</option>
+                                        <option value="37">37</option>
+                                        <option value="38">38</option>
+                                        <option value="39">39</option>
+                                        <option value="40">40</option>
+                                        <option value="41">41</option>
+                            </select>
+ 
+
                                 <a href="/add/{{ pro.id }}" class="btn btn-success">Ajouter au panier</a>
                             </a>
                         </div>
