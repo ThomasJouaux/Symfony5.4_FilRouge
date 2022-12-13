@@ -1,0 +1,97 @@
+    {% extends 'base.html.twig' %}
+
+    {% block title %}Hello InscriptionController!{% endblock %}
+
+    {% block body %}
+    <div class="panel panel-primary" style="margin:20px;">
+        <div class="panel-heading">
+                <h3 class="panel-title">Registration Form</h3>
+        </div>
+    <div class="panel-body">
+        <form>
+
+    <div class="col-md-12 col-sm-12 align-item-start">
+    <div class="row">
+        <div class="form-group col-md-6 col-sm-6">
+                <label for="name">Nom	</label>
+                <input type="text" class="form-control input-sm" id="name" placeholder="">
+            </div>
+            <div class="form-group col-md-6 col-sm-6">
+                <label for="email">Prénom</label>
+                <input type="email" class="form-control input-sm" id="email" placeholder="">
+            </div>
+    </div>
+    <div class="row">
+            <div class="form-group col-md-6 col-sm-6">
+                <label for="mobile">Numero de telephone</label>
+                <input type="text" class="form-control input-sm" id="mobile" placeholder="">
+            </div>
+
+        <div class="form-group col-md-6 col-sm-6">
+            <label for="address">Adresse 1</label>
+            <textarea class="form-control input-sm" id="address" rows="3"></textarea>
+        </div>
+        </div>
+        <div class="row">
+        <div class="form-group col-md-6 col-sm-6">
+            <label for="address">Adresse 2</label>
+            <textarea class="form-control input-sm" id="address" rows="3"></textarea>
+        </div>
+        <div class="form-group col-md-6 col-sm-6">
+            <label for="address">Adresse 3</label>
+            <textarea class="form-control input-sm" id="address" rows="3"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-3 col-sm-3">
+                <label for="city">Ville</label>
+                <input type="text" class="form-control input-sm" id="city" placeholder="">
+            </div>
+
+        <div class="form-group col-md-3 col-sm-3">
+                <label for="country">Pays</label>
+                <input type="text" class="form-control input-sm" id="country" placeholder="">
+            </div>
+
+        <div class="form-group col-md-3 col-sm-3">
+                <label for="pincode">Code Postal</label>
+                <input type="text" class="form-control input-sm" id="pincode" placeholder="">
+            </div>
+
+
+        <div class="form-group col-md-3 col-sm-3">
+                <label for="arrival">Date de Naissance</label>
+                <input type="text" class="form-control input-sm datepicker" id="arrival" placeholder="">
+            </div>
+            </div>
+    </div>
+    <div class="row">
+            <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+        Homme
+        </label>
+        </div>
+        <div class="form-check col-md-3 col-sm-3">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+        <label class="form-check-label" for="flexCheckChecked">
+            Femme
+        </label>
+        </div>
+        <div class="form-check col-md-3 col-sm-3">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+        <label class="form-check-label" for="flexCheckChecked">
+            Autres
+        </label>
+        </div>
+            <div class="form-group col-md-3 col-sm-3">
+                <label for="photo">Photo de profile</label>
+                <input type="file" id="photo">
+                <p class="help-block">Uploadez qu'une image au format souhaité</p>
+            </div>
+            </div>
+    </div>
+        </div>
+        <input type="submit" class="btn btn-success"></input>
+        </form>
+    {% endblock %}

@@ -2,23 +2,92 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\User;
 use App\Entity\Produit;
 use App\Entity\Categorie;
 use App\Entity\SousCategorie;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class CategorieFixtures extends Fixture 
 {
+
+    
     public function getDependencies()
     {
         return [
             CategorieFixtures::class,
         ];
     }
-    public function load(ObjectManager $manager): void
-    {
+    private $hasher;
 
+    public function __construct(UserPasswordHasherInterface $h) {
+         $this->hasher = $h;
+   }
+
+
+    public function load(ObjectManager $manager ): void
+    {
+        $user1 = new User();
+        $user1 ->setEmail("toto@gmail.com")
+               ->setRoles(["ROLE_USER"])
+                ->setPassword($this->hasher->hashPassword($user1 , "toto"))
+                ->setNom("tatu")
+                ->setPrenom("tatu")
+                ->setSexe("H")
+                ->setAdresse1("15 Rue des abricots")
+                ->setAdresse2("20 rue des lila")
+                ->setCodePostal("80000")
+                ->setVille("Amiens")
+                ->setTelephone("06.29.37.72.65")
+                ->setImage("\img\global\logoProfil.jpg");
+        $manager->persist($user1);
+
+        $user2 = new User();
+        $user2 ->setEmail("admin@gmail.com")
+                ->setRoles(["ROLE_ADMIN"])
+                ->setPassword($this->hasher->hashPassword($user2 , "admin"))
+                ->setNom("administrator")
+                ->setPrenom("admin")
+                ->setSexe("F")
+                ->setAdresse1("15 Rue des abricots")
+                ->setAdresse2("20 rue des lila")
+                ->setCodePostal("80000")
+                ->setVille("Amiens")
+                ->setTelephone("06.29.37.72.65")
+                ->setImage("\img\global\logoProfil.jpg");
+        $manager->persist($user2);
+
+        $user3 = new User();
+        $user3 ->setEmail("fournisseur@gmail.com")
+               ->setRoles(["ROLE_FOURNISSEUR"])
+                ->setPassword($this->hasher->hashPassword($user3 , "fournisseur"))
+                ->setNom("fournisseur")
+                ->setPrenom("fourni")
+                ->setSexe("H")
+                ->setAdresse1("15 Rue des abricots")
+                ->setAdresse2("20 rue des lila")
+                ->setCodePostal("80000")
+                ->setVille("Amiens")
+                ->setTelephone("06.29.37.72.65")
+                ->setImage("\img\global\logoProfil.jpg");
+        $manager->persist($user3);
+
+        $user4 = new User();
+        $user4 ->setEmail("superadmin@gmail.com")
+                ->setRoles(["ROLE_SUPER_ADMIN"])
+                ->setPassword($this->hasher->hashPassword($user4 , "superadmin"))
+                ->setNom("superAdministateur")
+                ->setPrenom("super admin")
+                ->setSexe("H")
+                ->setAdresse1("15 Rue des abricots")
+                ->setAdresse2("20 rue des lila")
+                ->setCodePostal("80000")
+                ->setVille("Amiens")
+                ->setTelephone("06.29.37.72.65")
+                ->setImage("\img\global\logoProfil.jpg");
+        $manager->persist($user4);
 
         $categorieHomme1 = new Categorie();
         $categorieHomme1->setCategorieNom("Categorie homme")

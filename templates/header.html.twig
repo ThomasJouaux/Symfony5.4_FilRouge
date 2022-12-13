@@ -6,6 +6,7 @@
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
+
 				<div class="collapse navbar-collapse" id="navbarColor02" bis_skin_checked="1">
 					<div>
 						<a href="/panier">panier
@@ -15,14 +16,20 @@
 							{% endfor %}
 							{{ total }}</a>
 					</div>
+					
 					<ul class="navbar-nav me-auto">
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle a_img_co col-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="img\LogoConnexion-removebg-preview.png" alt="connexion" class="img_connexion"></a>
-							<div class="dropdown-menu" bis_skin_checked="1">
-								<a class="dropdown-item" href="#">Connexion</a>
-								<a class="dropdown-item" href="/user">Inscription</a>
+							<a class="nav-link dropdown-toggle a_img_co col-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><img src="\img\global\logoProfil" alt="connexion" class="img_connexion"></a>
+							<div class="dropdown-menu" bis_skin_checked="1">								
+								{% if app.user %}
+									<a class="dropdown-item" href="/profile">Modifiez votre profil</a>
+									<a class="dropdown-item" href="/logout">Deconnexion</a>
+								{% else %}
+									<a class="dropdown-item" href="/login">Connexion</a>
+									<a class="dropdown-item" href="/inscription">Inscription</a>
+								{% endif %}
 								<div class="dropdown-divider" bis_skin_checked="1"></div>
-								<a class="dropdown-item" href="#">Nous contactez</a>
+								<a class="dropdown-item" href="#">Nous contacter</a>
 							</div>
 						</li>
 					</ul>

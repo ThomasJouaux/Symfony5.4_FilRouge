@@ -47,4 +47,5 @@ class ShoesIslandController extends AbstractController
             'liste' => $liste
         ]);
     }
+
 }
