@@ -92,7 +92,6 @@ class PanierController extends AbstractController
             $tva += ($value->getPrixProduit() * $value->getTvaProduit() / 100) * $value->quantite;
         }
         ;
-
         $prixProduitFinal = $nb + $tva;
         return $this->render('panier/index.html.twig', [
             'panier' => $panier,

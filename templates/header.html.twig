@@ -1,60 +1,105 @@
 <header>
-	<div class="container-fluid" bis_skin_checked="1">
-		<div class="row">
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			{% if app.user %}
-				<a class="navbar-brand col-10" href="/">Bienvenue Chez Shoes Island {{ app.user.nom }}  {{ app.user.prenom }} </a>
-			{% else %}
-				<a class="navbar-brand col-10" href="/">Bienvenue Chez Shoes Island ! </a>
-			{% endif %}
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarColor02" bis_skin_checked="1">
-					<div>
-						<a href="/panier">panier
-							{% set total = 0 %}
+            <!-- Sidebar -->
+            <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+              <div class="position-sticky">
+                <div class="list-group list-group-flush mx-3 mt-4">
+                  <a href="/" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+                    <i class="fas fa-home"></i><span>Acceuil</span>
+                  </a>
+                  {% for categorie in categories %}
+                  <a href="/categorie/{{categorie.id}}" class="list-group-item list-group-item-action py-2 ripple">
+                    <i class="fas fa-shoe-prints"></i><span>{{categorie.CategorieNom}}</span>
+                  </a>
+				  {% endfor %}
+				  {% if app.user %}
+                  <a href="/profile" class="list-group-item list-group-item-action py-2 ripple"><i
+                      class="fas fa-users fa-fw me-3"></i><span>Votre profil</span></a>
+                  <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+                      class="fas fa-chart-bar fa-fw me-3"></i><span>Vos commandes</span></a>					
+				  {% endif %}
+				  <a href="/panier" class="list-group-item list-group-item-action py-2 ripple">
+				  <i class="fas fa-shopping-cart"></i><span class="badge rounded-pill badge-notification bg-danger">{% set total = 0 %}
 							{% for item in panier %}
 								{% set total = total + item.quantite %}
 							{% endfor %}
-							{{ total }}</a>
-					</div>
+							 {{ total }}
+							</span></a>
+                </div>
+              </div>
+            </nav>
+            <!-- Sidebar -->
+
+            <!-- Navbar -->
+            <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+              <!-- Container wrapper -->
+              <div class="container-fluid">
+                <!-- Toggle button -->
+                <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+                  aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Brand -->
+				{% if app.user %}
+                <a class="navbar-brand" href="/">
+                  <img src="{{ app.user.image }}" height="50" alt="MDB Logo"
+                    loading="lazy" />
+                </a>
 					
-					<ul class="navbar-nav me-auto">
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle a_img_co col-2" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-							{% if app.user %}
-							<img src="{{app.user.image}}" alt="connexion" class="img_connexion"></a>
-							{% else %}
-							<img src="\img\global\logoBaseProfil.png" alt="connexion" class="img_connexion"></a>
-							{% endif %}
-							<div class="dropdown-menu" bis_skin_checked="1">								
-								{% if app.user %}
-									<a class="dropdown-item" href="/profile">Modifiez votre profil</a>
-									<a class="dropdown-item" href="/logout">Deconnexion</a>
-								{% else %}
-									<a class="dropdown-item" href="/login">Connexion</a>
-									<a class="dropdown-item" href="/inscription">Inscription</a>
-								{% endif %}
-								<div class="dropdown-divider" bis_skin_checked="1"></div>
-								<a class="dropdown-item" href="#">Nous contacter</a>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="row">
-				{% for categorie in categories %}
-					<a href="/categorie/{{categorie.id}}" class="btn_navbar col-3 btn btn-secondary">
-						<button type="button" class="btn btn-secondary">{{categorie.CategorieNom}}</button>
-					</a>
+				{% else %}
+				 <a class="navbar-brand" href="/">
+                  <img src="{{asset('img/global/logo.png')}}" height="50" alt="MDB Logo"
+                    loading="lazy" />
+                </a>
+					
+				{% endif %}
+                <!-- Search form -->
+                <form class="d-none d-md-flex input-group w-auto my-auto">
+                  <input autocomplete="off" type="search" class="form-control rounded"
+                    placeholder='Search (ctrl + "/" to focus)' style="min-width: 225px;" />
+                  <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+                </form>
+				<h1> Bienvenue chez Shoes Island {% if app.user %}
+					{{app.user.nom}} , {{app.user.prenom}}
+				{% endif %}
+				! </h1>
+                <!-- Right links -->
+                <ul class="navbar-nav ms-auto d-flex flex-row">
+                  <!-- Notification dropdown -->
+                  <li class="nav-item dropdown">
+                    <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+                      role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                     <i class="fas fa-user-alt"></i>
+                      <span ></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+					  {% if app.user %}
+						<li>
+                        <a class="dropdown-item" href="/logout">Déconnexion</a>
+                      	</li>
+					  {% else %}
+                      <li>
+                        <a class="dropdown-item" href="/inscription">Inscription</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/login">Connexion</a>
+                      </li>
+					  {% endif %}
+                    </ul>
+					
+                  </li>
+                  <!-- Icon dropdown -->
+                  
+              <!-- Container wrapper -->
+            </nav>
+            <!-- Navbar -->
+          </header>
+          <!--Main Navigation-->
 
+          <!--Main layout-->
+          <main style="margin-top: 58px;">
+            <div class="container pt-4"></div>
+          </main>
+          <!--Main layout-->
 
-				{% endfor %}
-			</div>
-		</div>
-
-
-	</div>
-</nav></header>
+	

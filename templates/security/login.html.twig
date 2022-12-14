@@ -3,6 +3,9 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
+<section class="h-100 h-custom" style="background-color: ;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -39,4 +42,8 @@
         Sign in
     </button>
 </form>
+</div>
+</div>
+</section>
+
 {% endblock %}

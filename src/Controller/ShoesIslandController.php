@@ -14,15 +14,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ShoesIslandController extends AbstractController
 {
     #[Route('/', name: 'app_shoes_island')]
-    public function index(CategorieRepository $repo): Response
+    public function index(CategorieRepository $repo , ProduitRepository $repoPro): Response
     {
         $categories = $repo->findAll();
-
+        $pro = $repoPro->findAll();
 
         return $this->render('shoesIsland/index.html.twig', [
             'controller_name' => 'ShoesIslandController',
             'categories' => $categories,
-
+            'produit' => $pro,
         ]);
     }
 

@@ -3,9 +3,9 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col">
+<section class="h-100 h-custom" style="background-color: ;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
             <h1 class="text-center">Inscription</h1>
         {{ form_start(registrationForm) }}
         <fieldset class="">
@@ -34,7 +34,7 @@
 
         <button type="submit" class="btn btn-success my-3">M'inscrire</button>
     {{ form_end(registrationForm) }}
-        </div>
-    </div>
+  </div>
 </div>
+</section>
 {% endblock %}
