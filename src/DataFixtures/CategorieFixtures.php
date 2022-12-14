@@ -4,8 +4,10 @@ namespace App\DataFixtures;
 
 use App\Entity\User;
 use App\Entity\Produit;
+use App\Entity\Commande;
 use App\Entity\Categorie;
 use App\Entity\SousCategorie;
+use App\Entity\DetailCommande;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -29,6 +31,7 @@ class CategorieFixtures extends Fixture
 
     public function load(ObjectManager $manager ): void
     {
+        // UTILISATEUR //
         $user1 = new User();
         $user1 ->setEmail("toto@gmail.com")
                ->setRoles(["ROLE_USER"])
@@ -93,6 +96,7 @@ class CategorieFixtures extends Fixture
                 ->setPays("France");
         $manager->persist($user4);
 
+        // CATEGORIE //
         $categorieHomme1 = new Categorie();
         $categorieHomme1->setCategorieNom("Categorie homme")
             ->setCategorieType("Homme")
@@ -122,6 +126,7 @@ class CategorieFixtures extends Fixture
 
         $manager->persist($categorieAccessoire4);
 
+                 // SOUS CATEGORIE //
 
                 $SousCategorieHomme1 = new SousCategorie();
                 $SousCategorieHomme1->setSousCategorieNom("Sous Categorie homme")
@@ -208,6 +213,7 @@ class CategorieFixtures extends Fixture
                             $SousCategorieAccessoire3->setCategorie($categorieAccessoire4);
                             $manager->persist($SousCategorieAccessoire3);
 
+                            // PRODUIT
 
                         $produit1 = new Produit();
                         $produit1->setSexeProduit("Homme")
@@ -406,6 +412,63 @@ class CategorieFixtures extends Fixture
                             ->setCouleurProduit('Marron');
                         $produit7->setSousCategorie($SousCategorieAccessoire3);
                         $manager->persist($produit7);
+
+                        // COMMANDE //   
+                        $commande1 = new Commande();
+                        $commande1->setCommandeStatut(1)
+                                    ->setUser($user1);
+                        $manager->persist($commande1);
+                        
+                        $commande2 = new Commande();
+                        $commande2->setCommandeStatut(2)
+                                    ->setUser($user2);
+                        $manager->persist($commande2);
+
+                        $commande3 = new Commande();
+                        $commande3->setCommandeStatut(3)
+                                    ->setUser($user3);
+                        $manager->persist($commande3);
+
+
+                        $commande4 = new Commande();
+                        $commande4->setCommandeStatut(4)
+                                    ->setUser($user4);
+                        $manager->persist($commande4);
+
+                        
+                        $detailCommande1 = new DetailCommande();
+                        $detailCommande1->setDetailNomProduit("produit1")
+                                        ->setDetailQteArticle(3)
+                                        ->setDetailCommandePrixHt("750")
+                                        ->setDetailCommandePrixTtc("900")
+                                        ->setCommande($commande1);
+                        $manager->persist($detailCommande1);
+
+                        $detailCommande2 = new DetailCommande();
+                        $detailCommande2->setDetailNomProduit("produit2")
+                                        ->setDetailQteArticle(3)
+                                        ->setDetailCommandePrixHt("750")
+                                        ->setDetailCommandePrixTtc("900")
+                                        ->setCommande($commande2);
+                        $manager->persist($detailCommande2);
+
+                        $detailCommande3 = new DetailCommande();
+                        $detailCommande3->setDetailNomProduit("produit3")
+                                        ->setDetailQteArticle(3)
+                                        ->setDetailCommandePrixHt("750")
+                                        ->setDetailCommandePrixTtc("900")
+                                        ->setCommande($commande3);
+                        $manager->persist($detailCommande3);
+
+                        $detailCommande4 = new DetailCommande();
+                        $detailCommande4->setDetailNomProduit("produit4")
+                                        ->setDetailQteArticle(3)
+                                        ->setDetailCommandePrixHt("750")
+                                        ->setDetailCommandePrixTtc("900")
+                                        ->setCommande($commande4);
+                        $manager->persist($detailCommande4);
+
+
 
 
         $manager->flush();
