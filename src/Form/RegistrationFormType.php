@@ -15,7 +15,8 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
     use Symfony\Component\Form\Extension\Core\Type\TextType;
     use Symfony\Component\Form\Extension\Core\Type\EmailType;
     use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-    use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
     class RegistrationFormType extends AbstractType
     {
@@ -84,9 +85,12 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
                 ])
                 ->add('dateNaissance',DateType::class, [
                     'attr' => [
+                        'class' => 'form-control'
                         
                     ],
-                    'label' => 'Date de naissance'
+                    'widget' => 'single_text',
+                    'label' => 'Date de naissance',
+                    'html5' => true
                 ])
                 ->add('image', FileType::class, [
                     'attr' => [
@@ -94,11 +98,17 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
                     ],
                     'label' => 'Choisissez votre image de profil !' 
                 ])
-                ->add('sexe' , TextType::class,[
+                ->add('sexe' , ChoiceType::class,[
                     'attr' => [
                         'class' => 'form-control'
                     ],
-                    'label' => 'Sexe : H/F/A' 
+                    'label' => 'Sexe : H/F/A',
+                    'expanded' => false,
+                    'choices'  => [
+                        'Homme' => "H",
+                        'Femme' => "F",
+                        'Ne sais pas encore...' => null,
+                    ],
                 ])
                 ->add('agreeTerms', CheckboxType::class, [
                     'mapped' => false,
