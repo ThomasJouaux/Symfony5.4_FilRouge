@@ -65,9 +65,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commande::class)]
-    private Collection $user;
-
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
@@ -302,35 +299,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Commande>
-     */
-    public function getUser(): Collection
-    {
-        return $this->user;
-    }
 
-    public function addUser(Commande $user): self
-    {
-        if (!$this->user->contains($user)) {
-            $this->user->add($user);
-            $user->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(Commande $user): self
-    {
-        if ($this->user->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getUser() === $this) {
-                $user->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function isVerified(): bool
     {

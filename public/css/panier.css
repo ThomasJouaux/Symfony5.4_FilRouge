@@ -4,3 +4,9 @@
 .delivery{
     margin-bottom: 5%;
 }
+
+#x{
+    border: none;
+    background: none;
+    width: 20%;
+}
