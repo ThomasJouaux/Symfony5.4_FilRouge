@@ -144,7 +144,7 @@ class CategorieFixtures extends Fixture
                 $SousCategorieHomme2->setSousCategorieNom("Sous Categorie homme")
                     ->setSousCategorieSexe("Homme")
                     ->setSousCategorieType("Ville")
-                    ->setImg("/img/sousCat/SousCatVille.jpg");
+                    ->setImg("/img/sousCat/sousCatVille.jpg");
                 $SousCategorieHomme2->setCategorie($categorieHomme1);
 
                 $manager->persist($SousCategorieHomme2);
@@ -162,7 +162,7 @@ class CategorieFixtures extends Fixture
                 $SousCategorieFemme2->setSousCategorieNom("Sous Categorie Femme")
                     ->setSousCategorieSexe("Femme")
                     ->setSousCategorieType("Ville")
-                    ->setImg("/img/sousCat/SousCatVille.jpg");
+                    ->setImg("/img/sousCat/sousCatVille.jpg");
                 $SousCategorieFemme2->setCategorie($categorieFemme2);
 
                 $manager->persist($SousCategorieFemme2);
@@ -181,7 +181,7 @@ class CategorieFixtures extends Fixture
                 $SousCategorieEnfant3->setSousCategorieNom("Sous Categorie Enfant")
                     ->setSousCategorieSexe("Enfant")
                     ->setSousCategorieType("Ville")
-                    ->setImg("/img/sousCat/SousCatVille.jpg");
+                    ->setImg("/img/sousCat/sousCatVille.jpg");
                     $SousCategorieEnfant3->setCategorie($categorieEnfant3);
 
 
@@ -192,7 +192,7 @@ class CategorieFixtures extends Fixture
                 $SousCategorieAccessoire1->setSousCategorieNom("Sous Categorie Accessoire")
                      ->setSousCategorieSexe('Accessoire')
                     ->setSousCategorieType("Lacets")
-                    ->setImg("/img/sousCat/SousCatVille.jpg");
+                    ->setImg("/img/sousCat/sousCatVille.jpg");
                     $SousCategorieAccessoire1->setCategorie($categorieAccessoire4);
                     $manager->persist($SousCategorieAccessoire1);
 
@@ -202,7 +202,7 @@ class CategorieFixtures extends Fixture
                 $SousCategorieAccessoire2->setSousCategorieNom("Sous Categorie Accessoire")
                     ->setSousCategorieSexe('Accessoire')
                     ->setSousCategorieType("Cirage")
-                    ->setImg("/img/sousCat/SousCatVille.jpg");
+                    ->setImg("/img/sousCat/sousCatVille.jpg");
                             $SousCategorieAccessoire2->setCategorie($categorieAccessoire4);
 
                     $manager->persist($SousCategorieAccessoire2);
@@ -212,7 +212,7 @@ class CategorieFixtures extends Fixture
                 $SousCategorieAccessoire3->setSousCategorieNom("Sous Categorie Accessoire")
                     ->setSousCategorieSexe('Accessoire')
                     ->setSousCategorieType("Semelles")
-                    ->setImg("/img/sousCat/SousCatVille.jpg");
+                    ->setImg("/img/sousCat/sousCatVille.jpg");
                             $SousCategorieAccessoire3->setCategorie($categorieAccessoire4);
                             $manager->persist($SousCategorieAccessoire3);
 
@@ -417,23 +417,59 @@ class CategorieFixtures extends Fixture
                         $manager->persist($produit7);
 
                         // COMMANDE //   
+                        $commande1 = new Commande();
+                        $commande1->setCommandeStatut(1)
+                                    ->setUser($user1);
+                        $manager->persist($commande1);
                         
-                        $com1 = new Commande();
-                        $com1->setUser($user1);
-                          $com1->setDateCommande(new \DateTime());
-                        $manager->persist($com1);
+                        $commande2 = new Commande();
+                        $commande2->setCommandeStatut(2)
+                                    ->setUser($user2);
+                        $manager->persist($commande2);
 
-                        $sc1 = new SeCompose();
-                        $sc1->setProduit($produit1)
-                            ->setCommande($com1)
-                            ->setQuantite(5);
-                        $manager->persist($sc1);
+                        $commande3 = new Commande();
+                        $commande3->setCommandeStatut(3)
+                                    ->setUser($user3);
+                        $manager->persist($commande3);
 
-                        $sc2 = new SeCompose();
-                        $sc2->setProduit($produit2)
-                            ->setCommande($com1)
-                            ->setQuantite(2);
-                        $manager->persist($sc2);
+
+                        $commande4 = new Commande();
+                        $commande4->setCommandeStatut(4)
+                                    ->setUser($user4);
+                        $manager->persist($commande4);
+
+                        
+                        $detailCommande1 = new DetailCommande();
+                        $detailCommande1->setDetailNomProduit("produit1")
+                                        ->setDetailQteArticle(3)
+                                        ->setDetailCommandePrixHt("750")
+                                        ->setDetailCommandePrixTtc("900")
+                                        ->setCommande($commande1);
+                        $manager->persist($detailCommande1);
+
+                        $detailCommande2 = new DetailCommande();
+                        $detailCommande2->setDetailNomProduit("produit2")
+                                        ->setDetailQteArticle(3)
+                                        ->setDetailCommandePrixHt("750")
+                                        ->setDetailCommandePrixTtc("900")
+                                        ->setCommande($commande2);
+                        $manager->persist($detailCommande2);
+
+                        $detailCommande3 = new DetailCommande();
+                        $detailCommande3->setDetailNomProduit("produit3")
+                                        ->setDetailQteArticle(3)
+                                        ->setDetailCommandePrixHt("750")
+                                        ->setDetailCommandePrixTtc("900")
+                                        ->setCommande($commande3);
+                        $manager->persist($detailCommande3);
+
+                        $detailCommande4 = new DetailCommande();
+                        $detailCommande4->setDetailNomProduit("produit4")
+                                        ->setDetailQteArticle(3)
+                                        ->setDetailCommandePrixHt("750")
+                                        ->setDetailCommandePrixTtc("900")
+                                        ->setCommande($commande4);
+                        $manager->persist($detailCommande4);
 
 
 

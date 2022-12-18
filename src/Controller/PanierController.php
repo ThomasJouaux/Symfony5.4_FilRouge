@@ -119,6 +119,7 @@ class PanierController extends AbstractController
         foreach ($tab as $produit) {
             if ($produit->getId() == $id) {
                 $p = $produit;
+                
             }
         }
             // $p = $repo->find($id);
@@ -131,4 +132,24 @@ class PanierController extends AbstractController
 
     }
         
+    #[Route('/suppr/{id}', name: 'app_delete')]
+    public function suppr(SessionInterface $session , ProduitRepository $repo, $id): Response
+    {
+
+        $tab = $session->get("panier", []);
+
+        $p = null;
+        foreach ($tab as $produit) {
+            if ($produit->getId() == $id) {
+                $p = $produit;
+               array_pop($p);
+                }
+            }
+            return $this->redirect("/panier");
+        }
+            // $p = $repo->find($id);
+            // dd($p);
+        
+
+    
 }
