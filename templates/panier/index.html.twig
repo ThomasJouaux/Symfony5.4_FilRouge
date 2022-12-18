@@ -8,7 +8,7 @@
 		{% endblock %}
 
 {% block body %}
-	<section class="h-100 h-custom" style="background-color: #d2c9ff;">
+<section class="h-100 h-custom" style="background-color: #d2c9ff;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12">
@@ -28,8 +28,6 @@
                   </div>
                   <hr class="my-4">
 {% for pro in panier %}
-	
-
                   <div class="row mb-4 d-flex justify-content-between align-items-center">
                     <div class="col-md-2 col-lg-2 col-xl-2">
                       <img
@@ -46,10 +44,10 @@
                       <a href="/sub/{{pro.id}}" class="btn">
                         <i class="fas fa-minus"></i>
                       </a>
-						<div class="form-outline">
-                      <label class="form-label" for="form1">Quantité</label>
-												{{ pro.quantite }}
-						</div>
+					 <div class="form-outline">
+                          <label for="x" class="form-label">Quantité</label>
+                          <input id="x" value="{{ pro.quantite }}">
+          </div> 
                       <a href="/add/{{pro.id}}" class="btn">
                         <i class="fas fa-plus"></i>
                       </a>
@@ -107,8 +105,8 @@
 						 €  </h5>
                   </div>
 
-                  <button type="button" class="btn btn-dark btn-block btn-lg"
-                    data-mdb-ripple-color="dark">Payez</button>
+                  <a href="/commande" class="btn btn-dark btn-block btn-lg"
+                    data-mdb-ripple-color="dark">Payez</a>
 					<a href="/clear" class="btn btn-danger">Vider le panier</a>
                 </div>
               </div>

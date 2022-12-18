@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Entity\DetailCommande;
+use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CommandeRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: CommandeRepository::class)]
 class Commande
@@ -15,86 +17,77 @@ class Commande
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?bool $commandeStatut = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $date_commande = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $date = null;
-
-    #[ORM\ManyToOne(inversedBy: 'user')]
-    private ?user $user = null;
-
-
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $commande_date = null;
-
-    #[ORM\OneToOne(inversedBy: 'commande', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'commandes')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?DetailCommande $detailCommande = null;
+    private ?User $user = null;
+
+    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: SeCompose::class)]
+    private Collection $seComposes;
+
+    public function __construct()
+    {
+        $this->seComposes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function isCommandeStatut(): ?bool
+    public function getDateCommande(): ?\DateTimeInterface
     {
-        return $this->commandeStatut;
+        return $this->date_commande;
     }
 
-    public function setCommandeStatut(bool $commandeStatut): self
+    public function setDateCommande(DateTimeInterface $date_commande): self
     {
-        $this->commandeStatut = $commandeStatut;
+        $this->date_commande = $date_commande;
 
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(?\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getCommandeDate(): ?\DateTimeInterface
+    /**
+     * @return Collection<int, SeCompose>
+     */
+    public function getSeComposes(): Collection
     {
-        return $this->commande_date;
+        return $this->seComposes;
     }
 
-    public function setCommandeDate(?\DateTimeInterface $commande_date): self
+    public function addSeCompose(SeCompose $seCompose): self
     {
-        $this->commande_date = $commande_date;
+        if (!$this->seComposes->contains($seCompose)) {
+            $this->seComposes->add($seCompose);
+            $seCompose->setCommande($this);
+        }
 
         return $this;
     }
 
-    public function getDetailCommande(): ?detailCommande
+    public function removeSeCompose(SeCompose $seCompose): self
     {
-        return $this->detailCommande;
-    }
-
-    public function setDetailCommande(detailCommande $detailCommande): self
-    {
-        $this->detailCommande = $detailCommande;
+        if ($this->seComposes->removeElement($seCompose)) {
+            // set the owning side to null (unless already changed)
+            if ($seCompose->getCommande() === $this) {
+                $seCompose->setCommande(null);
+            }
+        }
 
         return $this;
     }
-
 }

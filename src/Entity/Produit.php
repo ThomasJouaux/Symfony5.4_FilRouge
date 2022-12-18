@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -44,6 +46,15 @@ class Produit
 
     #[ORM\Column]
     private ?int $tvaProduit = null;
+
+    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: SeCompose::class)]
+    private Collection $seComposes;
+
+
+    public function __construct()
+    {
+        $this->seComposes = new ArrayCollection();
+    }
 
 
 
@@ -175,6 +186,34 @@ class Produit
         return $this;
     }
 
+    /**
+     * @return Collection<int, SeCompose>
+     */
+    public function getSeComposes(): Collection
+    {
+        return $this->seComposes;
+    }
 
+    public function addSeCompose(SeCompose $seCompose): self
+    {
+        if (!$this->seComposes->contains($seCompose)) {
+            $this->seComposes->add($seCompose);
+            $seCompose->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSeCompose(SeCompose $seCompose): self
+    {
+        if ($this->seComposes->removeElement($seCompose)) {
+            // set the owning side to null (unless already changed)
+            if ($seCompose->getProduit() === $this) {
+                $seCompose->setProduit(null);
+            }
+        }
+
+        return $this;
+    }
     
 }
