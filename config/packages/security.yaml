@@ -35,9 +35,11 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/profile, roles: }
+         - { path: ^/fournisseur, roles: ROLE_FOURNISSEUR }
          - { path: ^/super_admin, roles: ROLE_SUPER_ADMIN }
 
     role_hierarchy:
+        ROLE_FOURNISSEUR: [ROLE_USER]
         ROLE_ADMIN:       [ROLE_USER, ROLE_FOURNISSEUR]
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 

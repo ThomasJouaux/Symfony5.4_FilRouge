@@ -19,7 +19,7 @@ class CommandeController extends AbstractController
 {
     #[IsGranted("ROLE_USER")]
     #[Route('/commande', name: 'app_commande')]
-    public function index(ProduitRepository $repo ,SessionInterface $session , EntityManagerInterface $manager ): Response
+    public function index(ProduitRepository $repo ,SessionInterface $session , EntityManagerInterface $manager): Response
     {
         $panier = $session->get("panier", []);
        

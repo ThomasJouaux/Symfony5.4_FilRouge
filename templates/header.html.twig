@@ -17,8 +17,18 @@
                   <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
                       class="fas fa-chart-bar fa-fw me-3"></i><span>Vos commandes</span></a>					
 				  {% endif %}
+          {% if is_granted("ROLE_ADMIN") %}
+                  <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+                      class="fas fa-chart-bar fa-fw me-3"></i><span>Votre pannel admin</span></a>
+          {% endif %}
+          {% if is_granted("ROLE_FOURNISSEUR") %}
+           <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
+                      class="fas fa-chart-bar fa-fw me-3"></i><span>Votre pannel fournisseur</span></a>
+          {% endif %}
+          
 				  <a href="/panier" class="list-group-item list-group-item-action py-2 ripple">
-				  <i class="fas fa-shopping-cart"></i><span class="badge rounded-pill badge-notification bg-danger">{% set total = 0 %}
+				  <i class="fas fa-shopping-cart"></i><span class="badge rounded-pill badge-notification bg-danger">
+          {% set total = 0 %}
 							{% for item in panier %}
 								{% set total = total + item.quantite %}
 							{% endfor %}
@@ -63,11 +73,6 @@
         {% if app.user %}
 					{{app.user.nom}} , {{app.user.prenom}}
 				{% endif %}
-        {% if is_granted("ROLE_ADMIN") %}
-          <div>
-            admin
-          </div>
-        {% endif %}
         
 				! </h1>
                 <!-- Right links -->

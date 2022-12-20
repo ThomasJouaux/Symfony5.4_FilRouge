@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{app.user.nom}}  {{app.user.prenom}}{% endblock %}
+
+{% block body %}
+<main class="my-5">
+    <div class="container">
+      <!--Section: Content-->
+      <section class="text-center text-md-start">
+        <h4 class="mb-5"><strong>Modification du profil de {{app.user.nom}} {{app.user.prenom}}</strong></h4>
+           {{form(form)}} 
+    </section>
+    </div>
+    </main>
+{% endblock %}
