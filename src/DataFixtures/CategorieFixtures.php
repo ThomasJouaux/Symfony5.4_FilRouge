@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use DateTime;
 use App\Entity\User;
 use App\Entity\Produit;
 use App\Entity\Commande;
@@ -9,10 +10,8 @@ use App\Entity\Categorie;
 use App\Entity\SeCompose;
 use App\Entity\SousCategorie;
 use App\Entity\DetailCommande;
-use App\DataFixtures\CategorieFixtures;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class CategorieFixtures extends Fixture 
@@ -417,61 +416,24 @@ class CategorieFixtures extends Fixture
                         $manager->persist($produit7);
 
                         // COMMANDE //   
-                        $commande1 = new Commande();
-                        $commande1->setCommandeStatut(1)
-                                    ->setUser($user1);
-                        $manager->persist($commande1);
                         
-                        $commande2 = new Commande();
-                        $commande2->setCommandeStatut(2)
-                                    ->setUser($user2);
-                        $manager->persist($commande2);
-
-                        $commande3 = new Commande();
-                        $commande3->setCommandeStatut(3)
-                                    ->setUser($user3);
-                        $manager->persist($commande3);
-
-
-                        $commande4 = new Commande();
-                        $commande4->setCommandeStatut(4)
-                                    ->setUser($user4);
-                        $manager->persist($commande4);
-
-                        
-                        $detailCommande1 = new DetailCommande();
-                        $detailCommande1->setDetailNomProduit("produit1")
-                                        ->setDetailQteArticle(3)
-                                        ->setDetailCommandePrixHt("750")
-                                        ->setDetailCommandePrixTtc("900")
-                                        ->setCommande($commande1);
-                        $manager->persist($detailCommande1);
-
-                        $detailCommande2 = new DetailCommande();
-                        $detailCommande2->setDetailNomProduit("produit2")
-                                        ->setDetailQteArticle(3)
-                                        ->setDetailCommandePrixHt("750")
-                                        ->setDetailCommandePrixTtc("900")
-                                        ->setCommande($commande2);
-                        $manager->persist($detailCommande2);
-
-                        $detailCommande3 = new DetailCommande();
-                        $detailCommande3->setDetailNomProduit("produit3")
-                                        ->setDetailQteArticle(3)
-                                        ->setDetailCommandePrixHt("750")
-                                        ->setDetailCommandePrixTtc("900")
-                                        ->setCommande($commande3);
-                        $manager->persist($detailCommande3);
-
-                        $detailCommande4 = new DetailCommande();
-                        $detailCommande4->setDetailNomProduit("produit4")
-                                        ->setDetailQteArticle(3)
-                                        ->setDetailCommandePrixHt("750")
-                                        ->setDetailCommandePrixTtc("900")
-                                        ->setCommande($commande4);
-                        $manager->persist($detailCommande4);
-
-
+                        $com1 = new Commande();
+                        $com1->setUser($user1);
+                        $com1->setDateCommande(new DateTime());
+                        $manager->persist($com1);
+                
+                        $sc1 = new SeCompose();
+                        $sc1->setProduit($produit1);
+                        $sc1->setCommande($com1);
+                        $sc1->setQuantite(5);
+                        $manager->persist($sc1);
+                
+                        $sc2 = new SeCompose();
+                        $sc2->setProduit($produit2);
+                        $sc2->setCommande($com1);
+                        $sc2->setQuantite(2);
+                        $manager->persist($sc2);
+                
 
 
         $manager->flush();
