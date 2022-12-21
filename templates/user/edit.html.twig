@@ -8,7 +8,29 @@
       <!--Section: Content-->
       <section class="text-center text-md-start">
         <h4 class="mb-5"><strong>Modification du profil de {{app.user.nom}} {{app.user.prenom}}</strong></h4>
-           {{form(form)}} 
+           {{ form_start(form) }}
+        <fieldset class="">
+            <legend>Mon identité</legend>
+            {{ form_row(form.nom) }}
+            {{ form_row(form.prenom) }}
+            {{ form_row(form.dateNaissance) }}
+            {{ form_row(form.sexe) }}
+        </fieldset>
+        <fieldset class="">
+            <legend>Mes coordonées</legend>
+            {{ form_row(form.adresse1) }}
+            {{ form_row(form.adresse2) }}
+            {{ form_row(form.adresse3) }}
+            {{ form_row(form.ville) }}
+            {{ form_row(form.pays) }}
+            {{ form_row(form.codePostal) }}
+            {{ form_row(form.telephone) }}
+            {{ form_row(form.image) }}
+        </fieldset>
+
+        <button type="submit" class="btn btn-success my-3">M'inscrire</button>
+    {{ form_end(form) }}
+
     </section>
     </div>
     </main>

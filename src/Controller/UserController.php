@@ -12,17 +12,19 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends AbstractController
 {
-    #[Route('/edit/{id}', name: 'app_user_edit')]
-    public function edit(User $user, Request $request ,EntityManagerInterface $manager): Response
+    #[Route('/edit/{user}', name: 'app_user_edit')]
+    public function edit(Request $request ,EntityManagerInterface $manager ): Response
     {   
-        if(!$this->getUser()){
-            return $this->redirectToRoute('app_login');
+        $user = $this->getUser();
+      
+       if(!$this->getUser()){
+           return $this->redirectToRoute('app_login');
         }
-        if($this->getUser()==$user){
+        if($this->getUser()!==$user){
             return $this->redirectToRoute('app_profile');
         }
 
-        $form = $this->createForm(UserType::class , $user);
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
@@ -34,7 +36,8 @@ class UserController extends AbstractController
                 'success', 
                 'Les modifications de votre profil ont bien ete prise en compte'
             );
-            return $this->redirectToRoute('/profile');
+            return $this->redirectToRoute('app_profile');
+            // return $this->redirect('app_profile');
         }
 
         return $this->render('user/edit.html.twig', [
