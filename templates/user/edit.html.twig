@@ -3,8 +3,20 @@
 {% block title %}Hello {{app.user.nom}}  {{app.user.prenom}}{% endblock %}
 
 {% block body %}
+{# Breadcrump #}
+
+
+
+{# body #}
 <main class="my-5">
     <div class="container">
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="/profile">Profile</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Modification du profil</li>
+  </ol>
+</nav>
       <!--Section: Content-->
       <section class="text-center text-md-start">
         <h4 class="mb-5"><strong>Modification du profil de {{app.user.nom}} {{app.user.prenom}}</strong></h4>
@@ -13,9 +25,10 @@
             <legend>Mon identité</legend>
             {{ form_row(form.nom) }}
             {{ form_row(form.prenom) }}
-            {{ form_row(form.dateNaissance) }}
-            {{ form_row(form.sexe) }}
+            {{ form_row(form.telephone) }}
+            {{ form_row(form.image) }}
         </fieldset>
+        <hr>
         <fieldset class="">
             <legend>Mes coordonées</legend>
             {{ form_row(form.adresse1) }}
@@ -24,11 +37,9 @@
             {{ form_row(form.ville) }}
             {{ form_row(form.pays) }}
             {{ form_row(form.codePostal) }}
-            {{ form_row(form.telephone) }}
-            {{ form_row(form.image) }}
         </fieldset>
 
-        <button type="submit" class="btn btn-success my-3">M'inscrire</button>
+        <button type="submit" class="btn btn-success my-3">Modifier mes informations </button>
     {{ form_end(form) }}
 
     </section>

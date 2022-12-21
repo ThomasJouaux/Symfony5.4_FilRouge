@@ -42,14 +42,17 @@ class UserType extends AbstractType
             ])
             ->add('adresse2', TextType::class, [
                 'attr' => [
+                   
                     'class' => 'form-control'
                 ],
+                'required' => false,
                 'label' => 'Adresse n°2'
             ])
             ->add('adresse3', TextType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
+                'required' => false,
                 'label' => 'Adresse n°3'
             ])
             ->add('ville', TextType::class, [
@@ -76,33 +79,13 @@ class UserType extends AbstractType
                 ],
                 'label' => 'Numero de téléphone'
             ])
-            ->add('dateNaissance', DateType::class, [
-                'attr' => [
-                    'class' => 'form-control'
-
-                ],
-                'widget' => 'single_text',
-                'label' => 'Date de naissance',
-                'html5' => true
-            ])
             ->add('image', FileType::class, [
                 'attr' => [
                     'class' => 'form-control'
                 ],
+                'required' => false,
                 'label' => 'Choisissez votre image de profil !',
                 'data_class' => null
-            ])
-            ->add('sexe', ChoiceType::class, [
-                'attr' => [
-                    'class' => 'form-control'
-                ],
-                'label' => 'Sexe : H/F/A',
-                'expanded' => false,
-                'choices'  => [
-                    'Homme' => "H",
-                    'Femme' => "F",
-                    'Ne sais pas encore...' => null,
-                ],
             ]);
             
     }

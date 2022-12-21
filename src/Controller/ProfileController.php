@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Form\EditProfileType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +15,6 @@ class ProfileController extends AbstractController
     #[Route('/profile', name: 'app_profile')]
     public function index(): Response
     {
-       
         return $this->render('profile/index.html.twig', [
             'controller_name' => 'ProfileController',
         ]);
