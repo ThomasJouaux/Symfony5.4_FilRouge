@@ -8,6 +8,7 @@
 
 {# body #}
 <section class="h-100 h-custom" style="background-color: ;">
+<main>
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
 {# BreadCrump #}
@@ -25,7 +26,11 @@
               class="rounded-circle img-fluid" style="width: 150px;">
             <h5 class="my-3">{{app.user.nom}}</h5>
             <p class="text-muted mb-1">{{app.user.prenom}}</p>
-            <p class="text-muted mb-1">Age</p>
+            <p class="text-muted mb-1">{% set now = "now"|date("Y-m-d") %}
+            {% set dateNaissance = app.user.dateNaissance|date('Y-m-d') %}
+            {% set diff = date(dateNaissance).diff(date(now)) %}
+            {% set age = diff.y %}
+            {{age}} ans.</p>
             
           
           </div>
@@ -109,5 +114,6 @@
 </section>
 </div>
 </div>
+</main>
 </section>
 {% endblock %}

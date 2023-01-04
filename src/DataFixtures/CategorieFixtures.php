@@ -102,20 +102,20 @@ class CategorieFixtures extends Fixture
         $categorieHomme1 = new Categorie();
         $categorieHomme1->setCategorieNom("Categorie homme")
             ->setCategorieType("Homme")
-            ->setCategorieImg('http://placehold.it/350x150');
+            ->setCategorieImg('\img\categorie\categorie_homme.jpeg');
         $manager->persist($categorieHomme1);
 
         $categorieFemme2 = new Categorie();
         $categorieFemme2->setCategorieNom("Categorie femme")
             ->setCategorieType("Femme")
-            ->setCategorieImg('http://placehold.it/350x150');
+            ->setCategorieImg('\img\categorie\categorie_femme.jpg');
 
         $manager->persist($categorieFemme2);
 
         $categorieEnfant3 = new Categorie();
         $categorieEnfant3->setCategorieNom("Categorie enfant")
             ->setCategorieType("Enfant")
-            ->setCategorieImg('http://placehold.it/350x150');
+            ->setCategorieImg('\img\categorie\categorie_enfant.jpg');
 
         $manager->persist($categorieEnfant3);
 
@@ -124,7 +124,7 @@ class CategorieFixtures extends Fixture
         $categorieAccessoire4 = new Categorie();
         $categorieAccessoire4->setCategorieNom("Categorie accessoire")
             ->setCategorieType("Accessoire")
-            ->setCategorieImg('http://placehold.it/350x150');
+            ->setCategorieImg('\img\categorie\categorie_accessoire.jpg');
 
         $manager->persist($categorieAccessoire4);
 

@@ -1,0 +1,27 @@
+#msgBvn{
+    font-family: 'Dancing Script', cursive;
+    margin-left: 2rem;
+    color: #34495E;
+}
+main{
+    background-color: #FFFCFB;
+}
+.imgCategorie{
+    width: fit-content !important;    
+}
+.imgHeader{
+   width: 100%;
+   align-items: center;
+   height:250px;
+}
+.mainHeader{
+    margin: none;
+    height: 250px;
+    margin-bottom: 15px;
+    margin-left: -30%;   
+}
+#sidebarMenu{
+    position:absolute;
+    height: 100%;
+    margin-top: 16.5%;
+}

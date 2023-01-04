@@ -1,16 +1,11 @@
 <header>
             <!-- Sidebar -->
-            <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-              <div class="position-sticky">
+            <nav id="sidebarMenu" class="collapse d-lg-block  sidebar collapse bg-white ">
+              <div class="">
                 <div class="list-group list-group-flush mx-3 mt-4">
-                  <a href="/" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+                  <a href="/" class="list-group-item list-group-item-action py-2 ripple" aria-current="false">
                     <i class="fas fa-home"></i><span>Acceuil</span>
                   </a>
-                  {% for categorie in categories %}
-                  <a href="/categorie/{{categorie.id}}" class="list-group-item list-group-item-action py-2 ripple">
-                    <i class="fas fa-shoe-prints"></i><span>{{categorie.CategorieNom}}</span>
-                  </a>
-				  {% endfor %}
 				  {% if app.user %}
                   <a href="/profile" class="list-group-item list-group-item-action py-2 ripple"><i
                       class="fas fa-users fa-fw me-3"></i><span>Votre profil</span></a>
@@ -26,17 +21,15 @@
                       class="fas fa-chart-bar fa-fw me-3"></i><span>Votre pannel fournisseur</span></a>
           {% endif %}
           
-				  <a href="/panier" class="list-group-item list-group-item-action py-2 ripple">
-				  <i class="fas fa-shopping-cart"></i><span class="badge rounded-pill badge-notification bg-danger">
-          {% set total = 0 %}
-							{% for item in panier %}
-								{% set total = total + item.quantite %}
-							{% endfor %}
-							 {{ total }}
-							</span></a>
+				 
                 </div>
               </div>
             </nav>
+                 <div class="container-fluid">
+          <main class ="row mainHeader">
+            <img src="\img\global\img_header.jpeg" class="img-fluid imgHeader">
+          </main>
+          </div>
             <!-- Sidebar -->
 
                 <!-- Navbar -->
@@ -69,7 +62,7 @@
                     placeholder='Search (ctrl + "/" to focus)' style="min-width: 225px;" />
                   <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
                 </form>
-				<h1> Bienvenue chez Shoes Island 
+				<h1 id="msgBvn"> Bienvenue chez Shoes Island 
         {% if app.user %}
 					{{app.user.nom}} , {{app.user.prenom}}
 				{% endif %}
@@ -100,18 +93,27 @@
                     </ul>
 					
                   </li>
-                  <!-- Icon dropdown -->
-                  
+                  <!-- Icon shopping -->
+                   <a href="/panier" class="list-group-item list-group-item-action py-2 ripple">
+				  <i class="fas fa-shopping-cart"></i><span class="badge rounded-pill badge-notification bg-danger">
+          {% set total = 0 %}
+							{% for item in panier %}
+								{% set total = total + item.quantite %}
+							{% endfor %}
+							 {{ total }}
+							</span></a>
               <!-- Container wrapper -->
+              
             </nav>
+       
             <!-- Navbar -->
           </header>
+
+
           <!--Main Navigation-->
 
           <!--Main layout-->
-          <main style="margin-top: 58px;">
-            <div class="container pt-4"></div>
-          </main>
+         
           <!--Main layout-->
 
 	

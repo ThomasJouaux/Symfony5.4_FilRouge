@@ -7,6 +7,7 @@ use App\Entity\Categorie;
 use App\Repository\ProduitRepository;
 use App\Repository\CategorieRepository;
 use App\Repository\SousCategorieRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ShoesIslandController extends AbstractController
 {
     #[Route('/', name: 'app_shoes_island')]
-    public function index(CategorieRepository $repo , ProduitRepository $repoPro): Response
+    public function index(CategorieRepository $repo , ProduitRepository $repoPro ): Response
     {
         $categories = $repo->findAll();
         $pro = $repoPro->findAll();
