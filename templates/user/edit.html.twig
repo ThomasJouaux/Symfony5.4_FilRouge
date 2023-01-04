@@ -9,6 +9,46 @@
 
 {# body #}
 <main class="my-5">
+<section>
+  <div class="divGauche">
+    <a href="/" class="" aria-current="false">
+      <i class="fas fa-home"></i>
+      <span>
+        Acceuil
+      </span>
+    </a>
+    {% if app.user %}
+      <a href="/profile" class="">
+        <i class="fas fa-users fa-fw me-3"></i>
+        <span>
+          Votre profil
+        </span>
+      </a>
+      <a href="#" class="">
+        <i class="fas fa-chart-bar fa-fw me-3"></i>
+        <span>
+          Vos commandes
+        </span>
+      </a>
+    {% endif %}
+    {% if is_granted("ROLE_ADMIN") %}
+      <a href="/admin" class="">
+        <i class="fas fa-chart-bar fa-fw me-3"></i>
+        <span>
+          Votre pannel admin
+        </span>
+      </a>
+    {% endif %}
+    {% if is_granted("ROLE_FOURNISSEUR") %}
+      <a href="#" class="">
+        <i class="fas fa-chart-bar fa-fw me-3"></i>
+        <span>
+          Votre pannel fournisseur
+        </span>
+      </a>
+    {% endif %}
+</div>
+</section>
     <div class="container">
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
